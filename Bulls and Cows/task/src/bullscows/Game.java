@@ -7,7 +7,7 @@ public class Game {
         this.secret = SecretGenerator.generateSecret(length);
     }
 
-    public void grade(String guess) {
+    public boolean grade(String guess) {
         int bulls = 0;
         int cows = 0;
 
@@ -21,11 +21,16 @@ public class Game {
             }
         }
         if (bulls == 0 && cows == 0) {
-            System.out.printf("Grade: None. The secret code is %s.%n", secret);
-            return;
+            System.out.println("Grade: None.");
+            return false;
         }
 
-        System.out.printf("Grade: %d bulls and %d cows. The secret code is %s.%n", bulls, cows, secret);
+        System.out.printf("Grade: %d bulls and %d cows. .%n", bulls, cows);
+        if (bulls == secret.length()) {
+            System.out.println("Congratulations! You guessed the secret code.");
+            return true;
+        }
+        return false;
 
     }
 
