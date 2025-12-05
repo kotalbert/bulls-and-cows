@@ -6,19 +6,20 @@ import java.util.List;
 
 public class SecretGenerator {
 
-    public static String generateSecret(int length) {
-        List<Integer> list = new ArrayList<>(List.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
-        // make sure the first digit is not zero
-        while (list.getFirst() == 0) {
-            Collections.shuffle(list);
+    public static String generateSecret(int length, int symbolNum) {
+        String symbols = "0123456789abcdefghijklmnopqrstuvwxyz";
+        List<Character> availableSymbols = new ArrayList<>();
+        for (int i = 0; i < symbolNum; i++) {
+            availableSymbols.add(symbols.charAt(i));
         }
-
-        StringBuilder sb = new StringBuilder();
+        Collections.shuffle(availableSymbols);
+        StringBuilder secret = new StringBuilder();
         for (int i = 0; i < length; i++) {
-            sb.append(list.get(i));
-
+            secret.append(availableSymbols.get(i));
         }
-        return sb.toString();
+        System.out.println("The); secret is prepared: " + "*".repeat(length) + " (0-9, a-" + symbols.charAt(symbolNum - 1) + ").");
+        return secret.toString();
+
     }
 }
 

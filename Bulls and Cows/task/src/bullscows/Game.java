@@ -3,8 +3,8 @@ package bullscows;
 public class Game {
     private final String secret;
 
-    public Game(int length) {
-        this.secret = SecretGenerator.generateSecret(length);
+    public Game(int length, int symbolNum) {
+        this.secret = SecretGenerator.generateSecret(length, symbolNum);
     }
 
     public boolean grade(String guess) {
@@ -34,7 +34,5 @@ public class Game {
 
     }
 
-    public String getSecret() {
-        return secret;
-    }
+
 }
