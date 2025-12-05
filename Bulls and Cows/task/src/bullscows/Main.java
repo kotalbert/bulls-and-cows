@@ -8,6 +8,7 @@ public class Main {
         int n = sc.nextInt();
         if (n > 10 || n < 1) {
             System.out.println("Error: can't generate a secret number with a length of " + n + " because there aren't enough unique digits.");
+            return;
         }
         Game game = new Game(n);
         System.out.printf("The random secret number is %s%n", game.getSecret());
